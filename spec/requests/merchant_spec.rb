@@ -11,7 +11,7 @@ describe 'merchant API' do
     merchants = JSON.parse(response.body)
 
     expect(merchants['data'].count).to eq(4)
-    expect(merchants['data'].first['attributes']['name']).to eq(merchant_list.first.name)
+    expect(merchants['data'].first['id']).to eq(merchant_list.first.id.to_s)
   end
 
   it 'is formatted in json:api spec' do
