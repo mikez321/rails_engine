@@ -2,13 +2,7 @@ require 'csv'
 
 desc 'Import CSV data'
 task :import => [:environment] do
-  require "pry"; binding.pry
-  Customer.delete_all
-  InvoiceItem.delete_all
-  Invoice.delete_all
-  Item.delete_all
-  Merchant.delete_all
-  Transaction.delete_all
+  Rake::Task['db:reset'].invoke
 
   CSV.foreach('data/customers.csv', headers: :true).each do |line|
     Customer.create(first_name: line['first_name'],
