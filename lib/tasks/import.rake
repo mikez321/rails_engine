@@ -12,14 +12,11 @@ task :import => [:environment] do
                   )
   end
 
-  CSV.foreach('data/invoice_items.csv', headers: :true).each do |line|
-    InvoiceItem.create(item_id: line['item_id'],
-                       invoice_id: line['invoice_id'],
-                       quantity: line['quantity'],
-                       unit_price: (line['unit_price'].to_f/100),
-                       created_at: line['created_at'],
-                       updated_at: line['updated_at']
-                     )
+  CSV.foreach('data/merchants.csv', headers: :true).each do |line|
+    Merchant.create(name: line['name'],
+                    created_at: line['created_at'],
+                    updated_at: line['updated_at']
+                  )
   end
 
   CSV.foreach('data/invoices.csv', headers: :true).each do |line|
@@ -41,18 +38,21 @@ task :import => [:environment] do
               )
   end
 
-  CSV.foreach('data/merchants.csv', headers: :true).each do |line|
-    Merchant.create(name: line['name'],
-                    created_at: line['created_at'],
-                    updated_at: line['updated_at']
-                  )
-  end
-
   CSV.foreach('data/transactions.csv', headers: :true).each do |line|
     Transaction.create(invoice_id: line['invoice_id'],
                        credit_card_number: line['credit_card_number'],
                        credit_card_expiration_date: line['credit_card_expiration_date'],
                        result: line['result'],
+                       created_at: line['created_at'],
+                       updated_at: line['updated_at']
+                     )
+  end
+
+  CSV.foreach('data/invoice_items.csv', headers: :true).each do |line|
+    InvoiceItem.create(item_id: line['item_id'],
+                       invoice_id: line['invoice_id'],
+                       quantity: line['quantity'],
+                       unit_price: (line['unit_price'].to_f/100),
                        created_at: line['created_at'],
                        updated_at: line['updated_at']
                      )
