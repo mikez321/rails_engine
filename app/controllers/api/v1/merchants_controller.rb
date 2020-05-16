@@ -20,6 +20,12 @@ class Api::V1::MerchantsController < ApplicationController
     render json: MerchantSerializer.new(merchant).serializable_hash
   end
 
+  def destroy
+    merchant = Merchant.find(params[:id])
+    merchant.destroy
+    render json: MerchantSerializer.new(merchant).serializable_hash
+  end
+
   private
 
   def body_params
