@@ -1,8 +1,8 @@
 FactoryBot.define do
   factory :item do
-    name { "MyString" }
-    description { "MyText" }
-    unit_price { 1.5 }
+    name { Faker::Device.model_name }
+    description { Faker::TvShows::RickAndMorty.quote }
+    unit_price { Faker::Number.decimal(l_digits: 2) }
     merchant_id { "" }
   end
 end
