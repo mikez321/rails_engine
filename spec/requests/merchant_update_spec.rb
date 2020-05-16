@@ -7,7 +7,7 @@ describe 'merchant_api' do
 
     body = { name: "Jim's Bikes and Leather" }
 
-    patch "/api/v1/merchants/#{merchant.id}", params: { body: body }
+    patch "/api/v1/merchants/#{merchant.id}", params: body
 
     expect(response).to be_successful
 
