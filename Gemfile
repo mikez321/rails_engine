@@ -11,6 +11,7 @@ gem 'rack-cors'
 gem 'factory_bot_rails'
 gem 'faker'
 gem 'rubocop-rails'
+gem 'fast_jsonapi'
 
 
 group :development, :test do
