@@ -32,5 +32,6 @@ describe 'Items API' do
     expect(merchants['data'].first['attributes']).to have_key('name')
     expect(merchants['data'].first['attributes']).to have_key('description')
     expect(merchants['data'].first['attributes']).to have_key('unit_price')
+    expect(merchants['data'].first['attributes']).to have_key('merchant_id')
   end
 end
