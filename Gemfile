@@ -10,6 +10,7 @@ gem 'pry'
 gem 'rack-cors'
 gem 'factory_bot_rails'
 gem 'faker'
+gem 'rubocop-rails'
 
 
 group :development, :test do
