@@ -1,3 +1,4 @@
-class MerchantSerializer < ActiveModel::Serializer
-  attributes :id, :name
+class MerchantSerializer
+  include FastJsonapi::ObjectSerializer
+  attributes :name
 end
