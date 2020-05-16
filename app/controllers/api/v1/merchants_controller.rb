@@ -29,7 +29,7 @@ class Api::V1::MerchantsController < ApplicationController
   private
 
   def body_params
-    params.require('body').permit(:name)
+    params.permit (:name)
   end
 
   def render_json(merchant)
