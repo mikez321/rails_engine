@@ -8,15 +8,16 @@ gem 'puma', '~> 3.11'
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'pry'
 gem 'rack-cors'
+gem 'factory_bot_rails'
+gem 'faker'
 
 
 group :development, :test do
   gem 'rspec-rails'
   gem 'capybara'
-  gem 'factory_bot_rails'
-  gem 'faker'
   gem 'simplecov', require: false
-  # gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'shoulda-matchers'
+  gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
 end
 
 group :development do
