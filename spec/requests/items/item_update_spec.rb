@@ -13,7 +13,7 @@ describe 'Items API' do
              unit_price: 1129.99
            }
 
-    patch "/api/v1/items/#{item.id}", params: { body: body }
+    patch "/api/v1/items/#{item.id}", params: body
 
     expect(response).to be_successful
 
