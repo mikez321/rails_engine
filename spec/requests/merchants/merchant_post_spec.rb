@@ -7,7 +7,7 @@ describe 'merchant_api' do
 
     body = { name: "Jim's Bikes and Leather" }
 
-    post '/api/v1/merchants', params: { body: body }
+    post '/api/v1/merchants', params: body
 
     expect(response).to be_successful
 
