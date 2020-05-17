@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe 'Items API' do
-  it 'can see an individual item' do
+  it 'can create new items' do
     merchant = create(:merchant)
     item1 = create(:item, merchant_id: merchant.id)
     item2 = create(:item, merchant_id: merchant.id)
@@ -14,7 +14,7 @@ describe 'Items API' do
              merchant_id: merchant.id
            }
 
-    post "/api/v1/items", params: { body: body }
+    post "/api/v1/items", params: body
 
     expect(response).to be_successful
 
