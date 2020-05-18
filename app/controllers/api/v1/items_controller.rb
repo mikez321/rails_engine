@@ -9,7 +9,11 @@ class Api::V1::ItemsController < ApplicationController
   end
 
   def show
-    item = Item.find(params[:id])
+    if !item_params.empty?
+      item = Item.where("LOWER(#{item_params.keys.first}) LIKE ?", "%#{item_params.values.first.downcase}%").limit(1)
+    else
+      item = Item.find(params[:id])
+    end
     render_json(item)
   end
 
