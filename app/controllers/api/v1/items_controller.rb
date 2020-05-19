@@ -12,7 +12,7 @@ class Api::V1::ItemsController < ApplicationController
     if params[:id] == 'find_all' && !item_params.empty?
       item = Item.where("LOWER(#{item_params.keys.first}) LIKE ?", "%#{item_params.values.first.downcase}%")
     elsif params[:id] == 'find'
-      item = Item.where("LOWER(#{item_params.keys.first}) LIKE ?", "%#{item_params.values.first.downcase}%").limit(1)
+      item = Item.find_by("LOWER(#{item_params.keys.first}) LIKE ?", "%#{item_params.values.first.downcase}%")
     else
       item = Item.find(params[:id])
     end

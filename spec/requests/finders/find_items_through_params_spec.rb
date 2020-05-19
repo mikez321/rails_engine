@@ -21,8 +21,8 @@ describe 'finding records through request' do
 
     json = JSON.parse(response.body, symbolize_names: true)
 
-    expect(json[:data].length).to eq(1)
-    expect(json[:data].first[:id]).to eq(item5.id.to_s)
+    expect(json[:data]).to be_a(Hash)
+    expect(json[:data][:id]).to eq(item5.id.to_s)
   end
 
   it 'can find an item by part of its attributes' do
@@ -42,7 +42,7 @@ describe 'finding records through request' do
 
     json = JSON.parse(response.body, symbolize_names: true)
 
-    expect(json[:data].first[:id]).to eq(item5.id.to_s)
+    expect(json[:data][:id]).to eq(item5.id.to_s)
   end
 
   it 'can find an item and is case insensitive' do
@@ -62,8 +62,7 @@ describe 'finding records through request' do
 
     json = JSON.parse(response.body, symbolize_names: true)
 
-    expect(json[:data].length).to eq(1)
-    expect(json[:data].first[:id]).to eq(item5.id.to_s)
+    expect(json[:data][:id]).to eq(item5.id.to_s)
   end
 
   it 'can find an item by description' do
@@ -82,8 +81,7 @@ describe 'finding records through request' do
     expect(response).to be_successful
 
     json = JSON.parse(response.body, symbolize_names: true)
-    expect(json[:data].length).to eq(1)
-    expect(json[:data].first[:id]).to eq(item5.id.to_s)
+    expect(json[:data][:id]).to eq(item5.id.to_s)
   end
 
   # it 'can find an item by price' do

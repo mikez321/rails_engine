@@ -11,8 +11,8 @@ describe 'finding records through request' do
 
     json = JSON.parse(response.body, symbolize_names: true)
 
-    expect(json[:data].first[:id]).to eq(merchant5.id.to_s)
-    expect(json[:data].length).to eq(1)
+    expect(json[:data]).to be_a(Hash)
+    expect(json[:data][:id]).to eq(merchant5.id.to_s)
   end
 
   it 'can find a merchant without a whole name' do
@@ -26,8 +26,8 @@ describe 'finding records through request' do
 
     json = JSON.parse(response.body, symbolize_names: true)
 
-    expect(json[:data].length).to eq(1)
-    expect(json[:data].first[:id]).to eq(merchant3.id.to_s)
+    expect(json[:data]).to be_a(Hash)
+    expect(json[:data][:id]).to eq(merchant3.id.to_s)
   end
 
   it 'can find a merchant and is case insensitive' do
@@ -41,7 +41,7 @@ describe 'finding records through request' do
 
     json = JSON.parse(response.body, symbolize_names: true)
 
-    expect(json[:data].length).to eq(1)
-    expect(json[:data].first[:id]).to eq(merchant2.id.to_s)
+    expect(json[:data]).to be_a(Hash)
+    expect(json[:data][:id]).to eq(merchant2.id.to_s)
   end
 end
