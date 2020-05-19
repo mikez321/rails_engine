@@ -1,4 +1,5 @@
 class Api::V1::MerchantsController < ApplicationController
+  include Searchable
   def index
     merchants = Merchant.all
     render_json(merchants)
