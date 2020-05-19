@@ -11,7 +11,7 @@ class Api::V1::ItemsController < ApplicationController
   def show
     if params[:id] == 'find_all' && !item_params.empty?
       item = Item.where("LOWER(#{item_params.keys.first}) LIKE ?", "%#{item_params.values.first.downcase}%")
-    elsif !item_params.empty?
+    elsif params[:id] == 'find'
       item = Item.where("LOWER(#{item_params.keys.first}) LIKE ?", "%#{item_params.values.first.downcase}%").limit(1)
     else
       item = Item.find(params[:id])

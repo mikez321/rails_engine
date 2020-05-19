@@ -6,12 +6,12 @@ class Api::V1::MerchantsController < ApplicationController
 
   def show
     if params[:id] == 'find_all'
-      merchant = Merchant.where("LOWER(name) LIKE ?", "%#{merchant_params['name'].downcase}%") 
+      merchant = Merchant.where("LOWER(name) LIKE ?", "%#{merchant_params['name'].downcase}%")
+    elsif params[:id] == 'find'
+      merchant = Merchant.where("LOWER(name) LIKE ?", "%#{merchant_params['name'].downcase}%").limit(1)
     elsif params[:item_id]
       id = Item.find(params[:item_id]).merchant_id
       merchant = Merchant.find(id)
-    elsif !merchant_params.empty?
-      merchant = Merchant.where("LOWER(name) LIKE ?", "%#{merchant_params['name'].downcase}%").limit(1)
     else
       merchant = Merchant.find(params[:id])
     end
