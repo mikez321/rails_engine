@@ -5,7 +5,9 @@ class Api::V1::MerchantsController < ApplicationController
   end
 
   def show
-    if params[:item_id]
+    if params[:id] == 'find_all'
+      merchant = Merchant.where("LOWER(name) LIKE ?", "%#{merchant_params['name'].downcase}%") 
+    elsif params[:item_id]
       id = Item.find(params[:item_id]).merchant_id
       merchant = Merchant.find(id)
     elsif !merchant_params.empty?
