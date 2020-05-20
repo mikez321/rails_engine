@@ -5,7 +5,11 @@ class Api::V1::Items::ItemSearchController < ApplicationController
   end
 
   def show
-    item = Item.find_by("LOWER(#{item_params.keys.first}) LIKE ?", "%#{item_params.values.first.downcase}%")
+    if item_params.keys.length > 1
+      item = Item.multi_find(item_params)
+    else
+      item = Item.find_by("LOWER(#{item_params.keys.first}) LIKE ?", "%#{item_params.values.first.downcase}%")
+    end
     render_json(item)
   end
 
