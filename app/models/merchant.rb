@@ -1,8 +1,13 @@
 class Merchant < ApplicationRecord
   has_many :items, dependent: :destroy
   has_many :invoices, dependent: :destroy
+  has_many :invoice_items, through: :items
 
   def self.most_items(merchants_requested)
-    require "pry"; binding.pry
+    Merchant.joins(:invoice_items)
+            .group(:id)
+            .select('merchants.id, merchants.name, sum(invoice_items.quantity) as total_sold')
+            .order('total_sold desc')
+            .limit(merchants_requested[:quantity])
   end
 end
