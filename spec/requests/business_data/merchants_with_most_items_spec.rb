@@ -67,7 +67,6 @@ describe 'merchant business metrics' do
     t14 = create(:transaction, invoice_id: invoice14.id, result: 'failed')
     t15 = create(:transaction, invoice_id: invoice15.id, result: 'success')
 
-    require "pry"; binding.pry
     get '/api/v1/merchants/most_items?quantity=3'
 
     expect(response).to be_successful

@@ -1,5 +1,7 @@
 class Api::V1::Merchants::MostItemsController < ApplicationController
   def index
+    merchant = Merchant.most_items(merchant_params)
+    render_json(merchant)
   end
 
   private
