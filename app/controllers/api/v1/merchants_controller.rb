@@ -1,16 +1,11 @@
 class Api::V1::MerchantsController < ApplicationController
-  include Searchable
   def index
     merchants = Merchant.all
     render_json(merchants)
   end
 
   def show
-    if params[:id] == 'find_all'
-      merchant = Merchant.where("LOWER(name) LIKE ?", "%#{merchant_params['name'].downcase}%")
-    elsif params[:id] == 'find'
-      merchant = Merchant.find_by("LOWER(name) LIKE ?", "%#{merchant_params['name'].downcase}%")
-    elsif params[:item_id]
+    if params[:item_id]
       id = Item.find(params[:item_id]).merchant_id
       merchant = Merchant.find(id)
     else
