@@ -99,5 +99,19 @@ RSpec.describe Merchant, type: :model do
       expect(Merchant.most_revenue(return_two)).to include(@hotdog, @shoes)
       expect(Merchant.most_revenue(return_three)).to include(@hotdog, @shoes, @hats)
     end
+
+    it 'can retun all merchants with similar params' do
+      steak = Merchant.create(name: 'Franks Steaks')
+      params = { 'name' => 'frank'}
+
+      expect(Merchant.all_with_params(params)).to include(@hotdog, steak)
+    end
+
+    it 'can return a single merchant with params' do
+      steak = Merchant.create(name: 'Franks Steaks')
+      params = { 'name' => 'frank'}
+
+      expect(Merchant.find_with_params(params)).to eq(@hotdog)
+    end
   end
 end
