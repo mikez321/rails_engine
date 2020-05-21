@@ -9,7 +9,7 @@ class Api::V1::ItemsController < ApplicationController
   end
 
   def show
-    item = Item.find(params[:id])
+      item = Item.find(params[:id])
     render_json(item)
   end
 

@@ -15,13 +15,13 @@ class Api::V1::MerchantsController < ApplicationController
   end
 
   def create
-    merchant = Merchant.create(body_params)
+    merchant = Merchant.create(merchant_params)
     render_json(merchant)
   end
 
   def update
     merchant = Merchant.find(params[:id])
-    merchant.update(body_params)
+    merchant.update(merchant_params)
     render_json(merchant)
   end
 
@@ -33,7 +33,7 @@ class Api::V1::MerchantsController < ApplicationController
 
   private
 
-  def body_params
+  def merchant_params
     params.permit(:name)
   end
 
