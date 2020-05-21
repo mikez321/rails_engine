@@ -1,10 +1,10 @@
 class Api::V1::ItemsController < ApplicationController
   def index
-    if params[:merchant_id]
-      items = Item.where(merchant_id: params[:merchant_id])
-    else
+    # if params[:merchant_id]
+    #   items = Item.where(merchant_id: params[:merchant_id])
+    # else
       items = Item.all
-    end
+    # end
     render_json(items)
   end
 
