@@ -1,33 +1,29 @@
 class Api::V1::ItemsController < ApplicationController
   def index
-    if params[:merchant_id]
-      items = Item.where(merchant_id: params[:merchant_id])
-    else
-      items = Item.all
-    end
-    render_json(items)
+    items = Item.all
+    item_json(items)
   end
 
   def show
       item = Item.find(params[:id])
-    render_json(item)
+    item_json(item)
   end
 
   def create
     item = Item.create(item_params)
-    render_json(item)
+    item_json(item)
   end
 
   def update
     item = Item.find(params[:id])
     item.update(item_params)
-    render_json(item)
+    item_json(item)
   end
 
   def destroy
     item = Item.find(params[:id])
     item.destroy
-    render_json(item)
+    item_json(item)
   end
 
   private
@@ -37,9 +33,5 @@ class Api::V1::ItemsController < ApplicationController
                   :description,
                   :unit_price,
                   :merchant_id)
-  end
-
-  def render_json(item)
-    render json: ItemSerializer.new(item).serializable_hash
   end
 end

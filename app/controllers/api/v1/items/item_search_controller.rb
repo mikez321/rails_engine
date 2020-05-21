@@ -1,16 +1,12 @@
 class Api::V1::Items::ItemSearchController < ApplicationController
   def index
-    item = Item.where("LOWER(#{item_params.keys.first}) LIKE ?", "%#{item_params.values.first.downcase}%")
-    render_json(item)
+    item = Item.all_with_params(item_params)
+    item_json(item)
   end
 
   def show
-    if item_params.keys.length > 1
-      item = Item.multi_find(item_params)
-    else
-      item = Item.find_by("LOWER(#{item_params.keys.first}) LIKE ?", "%#{item_params.values.first.downcase}%")
-    end
-    render_json(item)
+    item = Item.find_with_params(item_params)
+    item_json(item)
   end
 
   private
@@ -20,9 +16,5 @@ class Api::V1::Items::ItemSearchController < ApplicationController
                   :description,
                   :unit_price,
                   :merchant_id)
-  end
-
-  def render_json(item)
-    render json: ItemSerializer.new(item).serializable_hash
   end
 end

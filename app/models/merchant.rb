@@ -22,4 +22,12 @@ class Merchant < ApplicationRecord
             .order('revenue desc')
             .limit(merchants_requested[:quantity])
   end
+
+  def self.all_with_params(merchant_params)
+    Merchant.where("LOWER(name) LIKE ?", "%#{merchant_params['name'].downcase}%")
+  end
+
+  def self.find_with_params(merchant_params)
+    Merchant.find_by("LOWER(name) LIKE ?", "%#{merchant_params['name'].downcase}%")
+  end
 end
