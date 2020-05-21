@@ -13,4 +13,8 @@ class Merchant < ApplicationRecord
             .order('total_sold desc')
             .limit(merchants_requested[:quantity])
   end
+
+  def self.most_revenue(merchants_requested)
+    require "pry"; binding.pry
+  end
 end
