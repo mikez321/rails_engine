@@ -76,7 +76,7 @@ RSpec.describe Merchant, type: :model do
 
       # there were a total of 80 hotdogs sold by Big Jimmy Franks worth 159.20
       # there was 1 item sold by Shoes Plus for 89.99
-      # there were 2 items sold by Lids totaling $59.98
+      # there were 2 items sold by Lids totaling 59.98
 
     end
 
@@ -88,6 +88,16 @@ RSpec.describe Merchant, type: :model do
       expect(Merchant.most_items(return_one)).to include(@hotdog)
       expect(Merchant.most_items(return_two)).to include(@hotdog, @hats)
       expect(Merchant.most_items(return_three)).to include(@hotdog, @hats, @shoes)
+    end
+
+    it 'can return the merchants ordered by the most revenue' do
+      return_one = {:quantity => 1}
+      return_two = {:quantity => 2}
+      return_three = {:quantity => 3}
+
+      expect(Merchant.most_revenue(return_one)).to include(@hotdog)
+      expect(Merchant.most_revenue(return_two)).to include(@hotdog, @shoes)
+      expect(Merchant.most_revenue(return_three)).to include(@hotdog, @shoes, @hats)
     end
   end
 end
