@@ -83,4 +83,10 @@ describe 'merchant business metrics' do
     expect(included).to include(@hotdog.id.to_s, @hats.id.to_s)
     expect(included).to_not include(@shoes.id.to_s)
   end
+
+  it 'can retun the merchant witht he most revenue' do
+    get '/api/v1/merchants/most_revenue?quantity=2'
+
+    expect(response).to be_successful
+  end
 end
