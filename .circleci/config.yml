@@ -11,4 +11,4 @@ jobs:
       - checkout
       - run:
           name: configure bundler
-          command: gem install bundler
+          command: sudo gem install bundler
