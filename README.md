@@ -1,24 +1,17 @@
-# README
+# RAILS ENGINE
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## About
+Rails engine is a Turing project from the Back End cirriculum and was done as a solo assignment.  It was used as an intro to building a Rails API, using namespaced/versioned routes, serializers, as well as for practice with ActiveRecord.  The original project can be found [here](https://backend.turing.io/module3/projects/rails_engine/).  Rails Engine endpoints were tested against the Rails Driver which would be a theoretical front end of the application.  In case you're interested in this front end, you can check it out [here](https://github.com/turingschool-examples/rails_driver).
 
-Things you may want to cover:
+## Technologies
+* Rails API
+* ActiveRecord
+* RSpec
+* Factorybot/Faker
+* Rubocop
+* Postgres
+* Fast JSON API
+* Travis CI
+* Heroku
 
-* Ruby version
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
