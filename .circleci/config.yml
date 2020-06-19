@@ -12,3 +12,4 @@ jobs:
       - run:
           name: configure bundler
           command: sudo gem install bundler
+          -run: bundle exec rspec
