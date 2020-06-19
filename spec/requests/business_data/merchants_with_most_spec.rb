@@ -37,13 +37,13 @@ describe 'merchant business metrics' do
     @invoice_item1 = InvoiceItem.create(item_id: @food.id, invoice_id: @invoice1.id, quantity: 10, unit_price: 1.99 )
     @invoice_item2 = InvoiceItem.create(item_id: @food.id, invoice_id: @invoice2.id, quantity: 10, unit_price: 1.99)
     @invoice_item3 = InvoiceItem.create(item_id: @foot.id, invoice_id: @invoice3.id, quantity: 1, unit_price: 109.99)
-    @invoice_item4 = InvoiceItem.create(item_id: @food.id, invoice_id: @invoice4, quantity: 1, unit_price: 1.99)
+    @invoice_item4 = InvoiceItem.create(item_id: @food.id, invoice_id: @invoice4, quantity: 10, unit_price: 1.99)
     @invoice_item5 = InvoiceItem.create(item_id: @food.id, invoice_id: @invoice5.id, quantity: 10, unit_price: 1.99)
-    @invoice_item6 = InvoiceItem.create(item_id: @basic.id, invoice_id: @invoice6.id, quantity: 1, unit_price: 19.99)
+    @invoice_item6 = InvoiceItem.create(item_id: @basic.id, invoice_id: @invoice6.id, quantity: 10, unit_price: 19.99)
     @invoice_item7 = InvoiceItem.create(item_id: @food.id, invoice_id: @invoice7.id, quantity: 10, unit_price: 1.99)
     @invoice_item8 = InvoiceItem.create(item_id: @food.id, invoice_id: @invoice8.id, quantity: 10, unit_price: 1.99)
     @invoice_item9 = InvoiceItem.create(item_id: @fancy.id, invoice_id: @invoice9.id, quantity: 1, unit_price: 29.99)
-    @invoice_item10 = InvoiceItem.create(item_id: @basic.id, invoice_id: @invoice10.id, quantity: 2, unit_price: 19.99)
+    @invoice_item10 = InvoiceItem.create(item_id: @basic.id, invoice_id: @invoice10.id, quantity: 1, unit_price: 19.99)
     @invoice_item11 = InvoiceItem.create(item_id: @food.id, invoice_id: @invoice11.id, quantity: 10, unit_price: 1.99)
     @invoice_item12 = InvoiceItem.create(item_id: @food.id, invoice_id: @invoice12.id, quantity: 10, unit_price: 1.99)
     @invoice_item13 = InvoiceItem.create(item_id: @food.id, invoice_id: @invoice13.id, quantity: 10, unit_price: 1.99)
@@ -65,6 +65,10 @@ describe 'merchant business metrics' do
     @t13 = create(:transaction, invoice_id: @invoice13.id, result: 'success')
     @t14 = create(:transaction, invoice_id: @invoice14.id, result: 'failed')
     @t15 = create(:transaction, invoice_id: @invoice15.id, result: 'success')
+
+    # there were a total of 80 hotdogs sold by Big Jimmy Franks worth 159.20
+    # there was 1 item sold by Shoes Plus for 89.99
+    # there were 2 items sold by Lids totaling 59.98
   end
 
   it 'can return the merchant with the most sold items' do
@@ -84,9 +88,16 @@ describe 'merchant business metrics' do
     expect(included).to_not include(@shoes.id.to_s)
   end
 
-  it 'can retun the merchant witht he most revenue' do
+  it 'can retun the merchant with the most revenue' do
     get '/api/v1/merchants/most_revenue?quantity=2'
 
     expect(response).to be_successful
+
+    json = JSON.parse(response.body, symbolize_names: true)
+
+    expect(json[:data].length).to eq(2)
+
+    expect(json[:data].first[:id]).to eq(@hotdog.id.to_s)
+    expect(json[:data].last[:id]).to eq(@hats.id.to_s)
   end
 end
