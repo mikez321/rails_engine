@@ -58,7 +58,7 @@ jobs:
       # Run rspec in parallel
       - run:
           name: Tests
-          TESTFILES=$(circleci tests glob "spec/**/*.rb" | circleci tests split --split-by=timings)
+          command: TESTFILES=$(circleci tests glob "spec/**/*.rb" | circleci tests split --split-by=timings)
           bundle exec rspec -- ${TESTFILES}
       
 # We use workflows to orchestrate the jobs that we declared above.
