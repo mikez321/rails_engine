@@ -1,24 +1,3 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+This Readme is only to create a PR for this branch.  Ideally it will pass all Travis CI testing and then be automatically merged to heroku at /mighty-meadow-25750.  I don't think this app does anything on its own tho, so visiting the heroku site will likely not be very eventful.
