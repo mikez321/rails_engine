@@ -9,7 +9,8 @@ script:
 - bundle exec rails db:{create,migrate} RAILS_ENV=test
 - bundle exec rspec
 deploy:
-  provider: heroku:mighty-meadow-25750
+  provider: heroku:git
   api_key:
     secure: iboTIrriA8vAXXIiK7OE9yavkvQzxxSp1T0KMYlJ1RHXp2P91QioxQV0Hcr5d4iw6d3468p8MfgI3KDCi3mq1M5/neBT5gvQPoXfywbuBG9/81xsKTRaN72ZljYLtMhpa8u/+GU/M+mno4rRGcw03R1Tlr7vXHx9Nsg7CrWddZpeMcrDR5pPiahem2N4rTXIm+OBemELC6qPR2BeSVO4sYCT6YGwGk+aPFDFvlT5ua8fEy0YCR3Mi6sFTguPgAbl3NVK8PG3wOwEi9nvUYvEKfwlmjrGJ3qVu8jocAxX/AhynUpQwCEcvFVmNRyxY8J9QxI6hjoay5LYQ845ShV6RMS0elwtAQ7koRDuYyWfGfeYOIQcGBWROJ2O/b8Qwx7z6bq39of1AMIF5swXB1O3G9f0CLbtiddffZigZLIg+a3HgyFDqFvZ3x+RX9/gln9VstTajQ+pRmSEC45YXwfl6PdFXr/Gaq2LMGajF76YB0zBLt05NapK3RCr5ntm/+iT2lzzqcAi5q7v9HCzR5lnbxayZCo5DwEaWaJf4r0RRsoWHeQbQOmTO+esfX7GvDJQsK3Bg0t30dWiFaqUlJYtXpiSwSAc2Zntd2yct7+z/12pmV2Ll8FKTjg/L1mUsx0F4gfYyFAjKqHAm73U4emdmZr1ISBc1KWSZdxtZUhRUqA=
+  app: mighty-meadow-25750
   edge: true
