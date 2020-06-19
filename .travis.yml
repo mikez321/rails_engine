@@ -2,3 +2,5 @@ language: ruby
 rvm:
  - 2.5.3
  - jruby
+before_install:
+  - gem install bundler
