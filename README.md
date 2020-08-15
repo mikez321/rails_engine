@@ -9,9 +9,24 @@ Rails engine is a Turing project from the Back End cirriculum and was done as a 
 * RSpec
 * Factorybot/Faker
 * Rubocop
+* Simplecov
 * Postgres
 * Fast JSON API
 * Travis CI
 * Heroku
 
+## Achievements/Notable Elements
+__ActiveRecord Queries:__
+![](/readme_images/ar.png)
 
+Some of these got rather confusing, but they work!
+
+__Code Quality/MVC Principles:__
+![](/readme_images/controller.png)
+
+Proper MVC principles were followed allowing objects to be rendered through the Fast JSON API serializer as JSON endpoints.  Controllers stayed clean with minimal functionality, models handled the database level methods and queries, and serializers handled the 'views.'
+
+__Testing:__
+![](/readme_images/coverage.png)
+
+100% code coverage when testing with Simplecov.
