@@ -12,6 +12,10 @@ gem 'factory_bot_rails'
 gem 'faker'
 gem 'rubocop-rails'
 gem 'fast_jsonapi'
+gem "activestorage", ">= 5.2.4.3"
+gem "actionpack", ">= 5.2.4.3"
+gem "activesupport", ">= 5.2.4.3"
+gem "actionview", ">= 5.2.4.3"
 
 
 group :development, :test do
